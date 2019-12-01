@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Binding</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .m-2 {
+            margin: 2em;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1 class="text-center m-2">{{ title }}</h1>
+        <h1 class="text-center node">
+            {{ message }}
+        </h1>
+
+        <h1 class="text-center node">
+            <a v-bind:href="link">Google</a>
+        </h1>
+
+        <h1 class="node">
+            <img :src="src" :alt="alt">
+        </h1>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- My JS Code -->
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: "Data Binding",
+                message: "Hello World!",
+                link: 'https://google.com',
+                src: 'img/image.png',
+                alt: 'image Not Found.'
+            }
+        });
+    </script>
+</body>
+
+</html>

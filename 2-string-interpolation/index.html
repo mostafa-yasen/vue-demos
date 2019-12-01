@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String Interpolation</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1 class="text-center">{{ title }}</h1>
+        <h1 class="text-center node">
+            {{ message }}
+        </h1>
+
+        <h1 class="text-center node">
+            {{ 'Welcome, ' + name }}
+        </h1>
+
+        <h1 class="text-center node">
+            {{ is_active ? "Your profile is active" : "Your profile is not active" }}
+        </h1>
+
+        <h1 class="text-center node">
+            {{ message.split('').reverse().join('') }}
+        </h1>
+
+        <h1 class="text-center node">
+            {{ 'Your age is: ' + age }}
+        </h1>
+
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- My JS Code -->
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: "String Interpolation",
+                message: "Hello World!",
+                name: "Jogn Doe",
+                is_active: true,
+                age: 26
+            }
+        });
+
+    </script>
+</body>
+
+</html>

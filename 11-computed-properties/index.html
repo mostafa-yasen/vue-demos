@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed Properties</title>
+
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- My Styles -->
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <h1 class="text-center my-5">
+            {{ title }}
+        </h1>
+
+        <div class="row text-center">
+            <div class="col">
+                <h2 class="text-primary">First Name: {{ first_name }}</h2>
+            </div>
+            <div class="col">
+                <h2 class="text-primary">Last Name: {{ last_name }}</h2>
+            </div>
+            
+            <div class="col-12">
+                <h1 class="text-success">
+                    {{ full_name }}
+                </h1>
+            </div>
+                        
+        </div>
+    </div>
+
+    <!-- JQuery Minified. -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                title: 'Computed Properties',
+                first_name: 'Mostafa',
+                last_name: 'Yasin'
+            },
+            computed: {
+                full_name() {
+                    return this.first_name + ' ' + this.last_name;
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

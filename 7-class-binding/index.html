@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class Binding</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1 class="text-center my-5">
+            {{ title }}
+        </h1>
+        <div class="container mt-4">
+            <form action="">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 :class="{ 'text-primary': is_active, 'node': true }">John Doe</h1>
+                    </div>
+                    <div class="col text-center">
+                        <h1 :class="{ 'text-danger': is_not_active, node: true }">John Doe</h1>
+                    </div>
+                    <div class="col-12 text-center">
+                        <h1 class="node" :class="[is_active? 'text-success' : 'text-danger']">John Doe</h1>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                title: "Class Binding",
+                username: '',
+                is_active: false,
+                is_not_active: true
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watchers</title>
+
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- My Styles -->
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        .status {
+            min-width: 10px;
+            min-height: 10px;
+            border-radius: 50%;
+            background-color: lightgrey;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <h1 class="text-center my-5">
+            {{ title }}
+        </h1>
+
+        <div class="row text-center">
+            <div class="col"></div>
+            <div class="col-8">
+                <h3 class="font-weight-bold">
+                    {{ user_name }}
+                    <span id="status_indicator" class="badge badge-success">Active</span>
+                </h3>
+                <input type="checkbox" name="status" id="status" v-model="active" checked>
+                <label for="status">
+                    Active
+                </label>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <!-- JQuery Minified. -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                title: 'Watchers',
+                user_name: "Mostafa Yasin",
+                active: true,
+                phone: "+20 10 99 1690 45"
+            },
+            watch: {
+                active (new_value) {
+                    $("#status_indicator").toggleClass("badge-success badge-warning")
+                    if (new_value) {
+                        $("#status_indicator").text("Active");
+                    } else {
+                        $("#status_indicator").text("Not Active");
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

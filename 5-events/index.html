@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/d236e00e2c.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1 class="text-center my-5">
+            {{ title }}
+        </h1>
+        <div class="container mt-4">
+            <form action="" @submit.prevent="title = new_title">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 v-on:click="number++" class="bg-success rounded text-center pt-5 pb-2 text-light text-bold">
+                            {{ number }}
+                            <br>
+                            <br>
+                            <i class="fas fa-angle-up"></i>
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 @click.right="number--"
+                            class="bg-danger rounded text-center pt-5 pb-2 text-light text-bold">
+                            {{ number }}
+                            <br>
+                            <br>
+                            <i class="fas fa-angle-down"></i>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h3>
+                        <input type="text" id="title_input" v-model="new_title" class="form-control"
+                            :placeholder="title">
+                        </h3>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-info w-100" type="submit">Change</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                title: "Events",
+                new_title: '',
+                number: 0
+            }
+        });
+
+    </script>
+</body>
+
+</html>

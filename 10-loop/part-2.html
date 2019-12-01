@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop Part-2</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .node {
+            padding: 10px;
+            background-color: cadetblue;
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1 class="text-center my-5">
+            {{ title }}
+        </h1>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8">
+                    <form action="" @submit.prevent="add_post()">
+                        <div class="row">
+                            <div class="col">
+                                <input required type="text" id="post_auther" class="form-control" placeholder="Auther">
+                            </div>
+                            <div class="col">
+                                <input required type="datetime" id="post_title" class="form-control"
+                                    placeholder="Post Title">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <textarea required name="content" id="post_content" cols="30" rows="3"
+                                    class="form-control" placeholder="Post Content">
+                                        </textarea>
+                            </div>
+                            <div class="col mt-4">
+                                <button class="btn btn-primary float-right">
+                                    Add Post
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <hr>
+                    <ul class="list-unstyled">
+                        <li v-for="post in posts" class="mt-3">
+                            <div class="card">
+                                <div class="card-header bg-dark text-light">
+                                    {{ post.post_title }}
+                                </div>
+                                <div class="card-body">
+                                    {{ post.post_content }}
+                                </div>
+                                <div class="card-footer text-right text-italic">
+                                    <q>{{ post.post_auther }}</q>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JQuery Minified. -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                title: "Loop part-2",
+                posts: [
+                    {
+                        post_auther: "Mostafa Yasin",
+                        post_title: "Vue.js is awesome",
+                        post_content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente esse itaque eveniet, repellat saepe culpa accusantium voluptatibus omnis hic illo, nemo nihil tempore repellendus nostrum inventore voluptas eum velit."
+                    }
+                ]
+            },
+            methods: {
+                add_post() {
+                    // Grap the data from the DOM
+                    var content = $('#post_content').val(),
+                        auther = $('#post_auther').val(),
+                        title = $('#post_title').val();
+
+                    // Append it to the posts list.
+                    this.posts.push({
+                        post_content: content,
+                        post_auther: auther,
+                        post_title: title
+                    });
+
+                    // Clear the inputs
+                    $("#post_auther, #post_content, #post_title").val('');
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
